@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5251tes6fnby"
-path="res://.godot/imported/backgroundpink.jpg-14f0a1242c343cdcc5cc8148c5d989ad.ctex"
+uid="uid://do01si3a4lx5p"
+path.bptc="res://.godot/imported/kloofendal_48d_partly_cloudy_puresky_2k.hdr-120330f77df3c466e3f6284404a7b046.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://backgroundpink.jpg"
-dest_files=["res://.godot/imported/backgroundpink.jpg-14f0a1242c343cdcc5cc8148c5d989ad.ctex"]
+source_file="res://assets/Skybox/kloofendal_48d_partly_cloudy_puresky_2k.hdr"
+dest_files=["res://.godot/imported/kloofendal_48d_partly_cloudy_puresky_2k.hdr-120330f77df3c466e3f6284404a7b046.bptc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +38,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

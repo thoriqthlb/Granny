@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://vf1s7pbsf3p1"
-path="res://.godot/imported/Death Bones.ttf-b3a6e65d16479bd9bff7109fbdcf83f3.fontdata"
+path="res://.godot/imported/Death Bones.ttf-db1ce34a4ba2b7afcc9dde62e433008a.fontdata"
 
 [deps]
 
-source_file="res://Death Bones.ttf"
-dest_files=["res://.godot/imported/Death Bones.ttf-b3a6e65d16479bd9bff7109fbdcf83f3.fontdata"]
+source_file="res://assets/Font/Death Bones.ttf"
+dest_files=["res://.godot/imported/Death Bones.ttf-db1ce34a4ba2b7afcc9dde62e433008a.fontdata"]
 
 [params]
 

@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var standing_collision_shape: CollisionShape3D = $standing_collision_shape
 @onready var crouching_collision_shape: CollisionShape3D = $crouching_collision_shape
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
+@onready var interact_area: Area3D = $InteractArea
 
 #Speed Vars
 var current_speed = 5.0
@@ -25,7 +26,11 @@ const mouse_sense = 0.15
 
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# Make sure the interact area is monitoring bodies
+	if interact_area:
+		interact_area.monitoring = true
+		interact_area.monitorable = true
 
 func _input(event: InputEvent) -> void:
 	
@@ -33,7 +38,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
-		head.rotation.x = clamp(head.rotation.x,deg_to_rad(-89), deg_to_rad(89))
+		head.rotation.x = clamp(head.rotation.x,deg_to_rad(-60), deg_to_rad(60))
 
 func _physics_process(delta):
 	
@@ -76,5 +81,15 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
+
+	# Interaction: press "interact" (E) to toggle follow on a nearby NPC
+	if Input.is_action_just_pressed("interact") and interact_area:
+		var bodies = interact_area.get_overlapping_bodies()
+		for b in bodies:
+			# call NPC's toggle_follow(self) if present
+			if b and b.has_method("toggle_follow"):
+				b.toggle_follow(self)
+				# optionally break after toggling the first NPC
+				break
 
 	move_and_slide()

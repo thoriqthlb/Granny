@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do01si3a4lx5p"
-path.bptc="res://.godot/imported/kloofendal_48d_partly_cloudy_puresky_2k.hdr-1d7afae70b983401b16b7fd6cd09e7ba.bptc.ctex"
+uid="uid://b5251tes6fnby"
+path.s3tc="res://.godot/imported/backgroundpink.jpg-cc6884e3725d99c394d0ef1df9ab8675.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr"
-dest_files=["res://.godot/imported/kloofendal_48d_partly_cloudy_puresky_2k.hdr-1d7afae70b983401b16b7fd6cd09e7ba.bptc.ctex"]
+source_file="res://assets/textures/backgroundpink.jpg"
+dest_files=["res://.godot/imported/backgroundpink.jpg-cc6884e3725d99c394d0ef1df9ab8675.s3tc.ctex"]
 
 [params]
 

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cigneymlaf4xu"]
+
+[ext_resource type="Script" uid="uid://ofwl0y23ruxe" path="res://script/patient.gd" id="1_mhqvh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w6wah"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mhqvh"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Patient" type="CharacterBody3D" parent="."]
+script = ExtResource("1_mhqvh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Patient"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_w6wah")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Patient"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_mhqvh")
