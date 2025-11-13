@@ -2,8 +2,7 @@ extends Node3D
 
 @export var patient_scene: PackedScene
 @onready var summon_pos: Node3D = $summonPos
-@onready var move_pos: Node3D = $movePos   # 👈 add this line
-@onready var hospital_scene: Node3D = $"../hospital"   # path to where NavigationRegion3D lives
+@onready var waiting_area: Area3D = $movePos
 
 @export var spawn_interval: float = 5.0
 @export var max_patients: int = 10
@@ -20,9 +19,27 @@ func _process(delta):
 
 func spawn_patient():
 	var patient = patient_scene.instantiate()
-	hospital_scene.add_child(patient)  # 👈 instead of current_scene
+	get_tree().current_scene.add_child(patient)
 	patient.global_transform.origin = summon_pos.global_transform.origin
 	current_patients += 1
 
-	if move_pos and patient.has_method("move_to_location"):
-		patient.move_to_location(move_pos.global_transform.origin)
+	var random_pos = get_random_point_in_area(waiting_area)
+	if patient.has_method("move_to_location"):
+		patient.move_to_location(random_pos)
+
+	print("Spawned patient #", current_patients, "→ Moving to:", random_pos)
+
+# 🔹 Helper: pick a random point inside Area3D bounds
+func get_random_point_in_area(area: Area3D) -> Vector3:
+	var shape = area.get_node("CollisionShape3D").shape
+	if shape is BoxShape3D:
+		var extents = shape.size / 2.0
+		var local_point = Vector3(
+			randf_range(-extents.x, extents.x),
+			0,
+			randf_range(-extents.z, extents.z)
+		)
+		return area.global_transform.origin + local_point
+	else:
+		push_warning("WaitingArea must use a BoxShape3D for random point selection.")
+		return area.global_transform.origin
