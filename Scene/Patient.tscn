@@ -789,7 +789,7 @@ states/IrengAnim_Walk/node = SubResource("AnimationNodeAnimation_1ttwp")
 states/IrengAnim_Walk/position = Vector2(646, 56)
 transitions = ["Start", "IrengAnim_Idle", SubResource("AnimationNodeStateMachineTransition_eiev2"), "IrengAnim_Idle", "IrengAnim_Walk", SubResource("AnimationNodeStateMachineTransition_b71q8"), "IrengAnim_Walk", "IrengAnim_Idle", SubResource("AnimationNodeStateMachineTransition_b6bir")]
 
-[node name="Node3D" type="CharacterBody3D"]
+[node name="Pasien" type="CharacterBody3D" groups=["pasien"]]
 script = ExtResource("1_mhqvh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

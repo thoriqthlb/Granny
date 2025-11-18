@@ -97,23 +97,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4940224, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PatientSpawner/movePos"]
 shape = SubResource("BoxShape3D_1xcnr")
 
-[node name="Area3D2" type="Area3D" parent="."]
+[node name="Sensor_1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5783787, 0, 2.8075323)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sensor_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5504434, 0.5, 0.36230755)
 shape = SubResource("BoxShape3D_3amdw")
 
-[node name="Area3D3" type="Area3D" parent="."]
+[node name="Sensor_2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5783787, 0, -3.8301797)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sensor_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5504434, 0.5, 0.36230755)
+shape = SubResource("BoxShape3D_3amdw")
+
+[node name="Sensor_3" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.164659, 0, 2.8329725)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sensor_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8648291, 0.5, 0.36230755)
 shape = SubResource("BoxShape3D_3amdw")
 
-[node name="Area3D4" type="Area3D" parent="."]
+[node name="Sensor_4" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.164659, 0, -3.7739894)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sensor_4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8648291, 0.5, 0.36230755)
 shape = SubResource("BoxShape3D_3amdw")
+
+[connection signal="body_entered" from="Sensor_1" to="hospital" method="_on_sensor_1_body_entered"]
+[connection signal="body_exited" from="Sensor_1" to="hospital" method="_on_sensor_1_body_exited"]
+[connection signal="body_entered" from="Sensor_2" to="hospital" method="_on_sensor_2_body_entered"]
+[connection signal="body_entered" from="Sensor_3" to="hospital" method="_on_sensor_3_body_entered"]
+[connection signal="body_entered" from="Sensor_4" to="hospital" method="_on_sensor_4_body_entered"]

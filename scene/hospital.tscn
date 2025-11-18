@@ -162,19 +162,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 material_override = SubResource("StandardMaterial3D_tfxkh")
 mesh = SubResource("BoxMesh_11tej")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Pintu_2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.964, 1.4471393, -4.902)
 mesh = SubResource("BoxMesh_droga")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="Pintu_4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.964, 1.4471393, -4.902)
 mesh = SubResource("BoxMesh_droga")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+[node name="Pintu_3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.964, 1.447, 4.8)
 mesh = SubResource("BoxMesh_droga")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+[node name="Pintu_1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9639997, 1.447, 4.8)
 mesh = SubResource("BoxMesh_droga")
 
@@ -215,3 +215,44 @@ transform = Transform3D(-0.04, 0, -6.0398317e-09, 0, 0.04, 0, 6.0398317e-09, 0, 
 
 [node name="Sketchfab_Scene12" parent="sketchfab_" instance=ExtResource("9_tx0be")]
 transform = Transform3D(-1.86, 0, -1.6260637e-07, 0, 1.86, 0, 1.6260637e-07, 0, -1.86, 13, 2, 14.7)
+
+[node name="Teks_Pintu_1" type="Label3D" parent="."]
+transform = Transform3D(-1.5, 0, 2.2649371e-07, 0, 1.5, 0, -2.2649371e-07, 0, -1.5, -2, 3.5, 4.7)
+modulate = Color(1, 0.32156864, 0.28235295, 1)
+text = "KOSONG"
+
+[node name="Teks_Pintu_3" type="Label3D" parent="."]
+transform = Transform3D(-1.5, 0, 2.2649371e-07, 0, 1.5, 0, -2.2649371e-07, 0, -1.5, -11, 3.5, 4.7)
+modulate = Color(1, 0.32156864, 0.28235295, 1)
+text = "KOSONG"
+
+[node name="Teks_Pintu_2" type="Label3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2, 3.5, -4.85)
+modulate = Color(1, 0.32156864, 0.28235295, 1)
+text = "KOSONG"
+
+[node name="Teks_Pintu_4" type="Label3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -11, 3.5, -4.85)
+modulate = Color(1, 0.32156864, 0.28235295, 1)
+text = "KOSONG"
+
+[node name="Timer_1" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Timer_2" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Timer_3" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Timer_4" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer_1" to="." method="_on_timer_1_timeout"]
+[connection signal="timeout" from="Timer_2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer_3" to="." method="_on_timer_3_timeout"]
+[connection signal="timeout" from="Timer_4" to="." method="_on_timer_4_timeout"]
