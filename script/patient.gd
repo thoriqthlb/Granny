@@ -194,3 +194,11 @@ func _update_animation():
 	# Update both booleans
 	anim_tree.set("parameters/conditions/walk", moving)
 	anim_tree.set("parameters/conditions/idle", not moving)
+
+
+func _on_sensor_ambil_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.
+
+
+func _on_sensor_ambil_body_exited(body: Node3D) -> void:
+	pass # Replace with function body.

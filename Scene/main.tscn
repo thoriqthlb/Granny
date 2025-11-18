@@ -26,13 +26,13 @@ height = 1.2
 [sub_resource type="BoxShape3D" id="BoxShape3D_2wwxx"]
 size = Vector3(0.5918579, 2.4174805, 1.986455)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1xcnr"]
-size = Vector3(9, 1, 24)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_3amdw"]
 size = Vector3(3, 1, 3)
 
-[node name="world" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1xcnr"]
+size = Vector3(9, 1, 24)
+
+[node name="Gameplay" type="Node3D"]
 
 [node name="env" type="Node3D" parent="."]
 
@@ -74,7 +74,35 @@ debug_color = Color(0, 0, 0, 1)
 [node name="Area" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5063543, 0, 3.3552728)
 
-[node name="hospital" parent="." instance=ExtResource("4_brvut")]
+[node name="Gedung_RS" parent="." instance=ExtResource("4_brvut")]
+
+[node name="Sensor_1" type="Area3D" parent="Gedung_RS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5783787, 0, 2.8075323)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gedung_RS/Sensor_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5504434, 0.5, 0.36230755)
+shape = SubResource("BoxShape3D_3amdw")
+
+[node name="Sensor_2" type="Area3D" parent="Gedung_RS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5783787, 0, -3.8301797)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gedung_RS/Sensor_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5504434, 0.5, 0.36230755)
+shape = SubResource("BoxShape3D_3amdw")
+
+[node name="Sensor_3" type="Area3D" parent="Gedung_RS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.164659, 0, 2.8329725)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gedung_RS/Sensor_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8648291, 0.5, 0.36230755)
+shape = SubResource("BoxShape3D_3amdw")
+
+[node name="Sensor_4" type="Area3D" parent="Gedung_RS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.164659, 0, -3.7739894)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gedung_RS/Sensor_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8648291, 0.5, 0.36230755)
+shape = SubResource("BoxShape3D_3amdw")
 
 [node name="PatientSpawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5063543, 0, 0)
@@ -90,36 +118,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4940224, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PatientSpawner/movePos"]
 shape = SubResource("BoxShape3D_1xcnr")
 
-[node name="Sensor_1" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5783787, 0, 2.8075323)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sensor_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5504434, 0.5, 0.36230755)
-shape = SubResource("BoxShape3D_3amdw")
-
-[node name="Sensor_2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5783787, 0, -3.8301797)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sensor_2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5504434, 0.5, 0.36230755)
-shape = SubResource("BoxShape3D_3amdw")
-
-[node name="Sensor_3" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.164659, 0, 2.8329725)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sensor_3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8648291, 0.5, 0.36230755)
-shape = SubResource("BoxShape3D_3amdw")
-
-[node name="Sensor_4" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.164659, 0, -3.7739894)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sensor_4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8648291, 0.5, 0.36230755)
-shape = SubResource("BoxShape3D_3amdw")
-
-[connection signal="body_entered" from="Sensor_1" to="hospital" method="_on_sensor_1_body_entered"]
-[connection signal="body_exited" from="Sensor_1" to="hospital" method="_on_sensor_1_body_exited"]
-[connection signal="body_entered" from="Sensor_2" to="hospital" method="_on_sensor_2_body_entered"]
-[connection signal="body_entered" from="Sensor_3" to="hospital" method="_on_sensor_3_body_entered"]
-[connection signal="body_entered" from="Sensor_4" to="hospital" method="_on_sensor_4_body_entered"]
+[connection signal="body_entered" from="Gedung_RS/Sensor_1" to="Gedung_RS" method="_on_sensor_1_body_entered"]
+[connection signal="body_exited" from="Gedung_RS/Sensor_1" to="Gedung_RS" method="_on_sensor_1_body_exited"]
+[connection signal="body_entered" from="Gedung_RS/Sensor_2" to="Gedung_RS" method="_on_sensor_2_body_entered"]
+[connection signal="body_entered" from="Gedung_RS/Sensor_3" to="Gedung_RS" method="_on_sensor_3_body_entered"]
+[connection signal="body_entered" from="Gedung_RS/Sensor_4" to="Gedung_RS" method="_on_sensor_4_body_entered"]

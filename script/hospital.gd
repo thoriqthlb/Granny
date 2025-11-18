@@ -1,6 +1,6 @@
 extends Node3D
 
-# --- REFERENSI ALAT (LABEL & TIMER) ---
+# --- REFERENSI ALAT ---
 @onready var timer_1 = $Timer_1
 @onready var timer_2 = $Timer_2
 @onready var timer_3 = $Timer_3
@@ -11,6 +11,9 @@ extends Node3D
 @onready var teks_3 = $Teks_Pintu_3
 @onready var teks_4 = $Teks_Pintu_4
 
+# REFERENSI UI INTERAKSI BARU (Tambahan)
+@onready var ui_label = $CanvasLayer/Label_Interaksi 
+
 # --- INGATAN (PASIEN DI MANA?) ---
 var pasien_di_pintu_1 = null
 var pasien_di_pintu_2 = null
@@ -18,6 +21,9 @@ var pasien_di_pintu_3 = null
 var pasien_di_pintu_4 = null
 
 func _ready():
+	# Sembunyikan UI Interaksi saat game dimulai
+	ui_label.visible = false 
+	
 	# Set semua tulisan awal jadi hijau
 	teks_1.text = "KOSONG"; teks_1.modulate = Color.GREEN
 	teks_2.text = "KOSONG"; teks_2.modulate = Color.GREEN
@@ -30,6 +36,14 @@ func _process(delta):
 	if not timer_2.is_stopped(): teks_2.text = str(ceil(timer_2.time_left))
 	if not timer_3.is_stopped(): teks_3.text = str(ceil(timer_3.time_left))
 	if not timer_4.is_stopped(): teks_4.text = str(ceil(timer_4.time_left))
+
+# --- FUNGSI BANTUAN UI BARU ---
+func tampilkan_ui(pesan):
+	ui_label.text = pesan
+	ui_label.visible = true
+
+func sembunyikan_ui():
+	ui_label.visible = false
 
 # --- LOGIKA INPUT (TOMBOL F) ---
 func _input(event):
@@ -52,19 +66,51 @@ func proses_interaksi(no_pintu, pasien, timer, teks):
 		
 		timer.start()
 		teks.modulate = Color.RED
+		sembunyikan_ui() # Sembunyikan UI setelah pasien dimasukkan
 		print("Pasien masuk Pintu " + str(no_pintu))
 
-# --- LOGIKA SENSOR MASUK ---
-func _on_sensor_1_body_entered(body): if body.is_in_group("pasien"): pasien_di_pintu_1 = body
-func _on_sensor_2_body_entered(body): if body.is_in_group("pasien"): pasien_di_pintu_2 = body
-func _on_sensor_3_body_entered(body): if body.is_in_group("pasien"): pasien_di_pintu_3 = body
-func _on_sensor_4_body_entered(body): if body.is_in_group("pasien"): pasien_di_pintu_4 = body
 
-# --- LOGIKA SENSOR KELUAR ---
-func _on_sensor_1_body_exited(body): if body == pasien_di_pintu_1: pasien_di_pintu_1 = null
-func _on_sensor_2_body_exited(body): if body == pasien_di_pintu_2: pasien_di_pintu_2 = null
-func _on_sensor_3_body_exited(body): if body == pasien_di_pintu_3: pasien_di_pintu_3 = null
-func _on_sensor_4_body_exited(body): if body == pasien_di_pintu_4: pasien_di_pintu_4 = null
+# --- LOGIKA SENSOR MASUK (UPDATE UNTUK UI) ---
+func _on_sensor_1_body_entered(body): 
+	if body.is_in_group("pasien"): 
+		pasien_di_pintu_1 = body
+		tampilkan_ui("[F] Masukkan Pasien") # Munculkan UI
+
+func _on_sensor_2_body_entered(body): 
+	if body.is_in_group("pasien"): 
+		pasien_di_pintu_2 = body
+		tampilkan_ui("[F] Masukkan Pasien")
+
+func _on_sensor_3_body_entered(body): 
+	if body.is_in_group("pasien"): 
+		pasien_di_pintu_3 = body
+		tampilkan_ui("[F] Masukkan Pasien")
+
+func _on_sensor_4_body_entered(body): 
+	if body.is_in_group("pasien"): 
+		pasien_di_pintu_4 = body
+		tampilkan_ui("[F] Masukkan Pasien")
+
+# --- LOGIKA SENSOR KELUAR (UPDATE UNTUK UI) ---
+func _on_sensor_1_body_exited(body): 
+	if body == pasien_di_pintu_1: 
+		pasien_di_pintu_1 = null
+		sembunyikan_ui() # Hilangkan UI
+
+func _on_sensor_2_body_exited(body): 
+	if body == pasien_di_pintu_2: 
+		pasien_di_pintu_2 = null
+		sembunyikan_ui() # Hilangkan UI
+
+func _on_sensor_3_body_exited(body): 
+	if body == pasien_di_pintu_3: 
+		pasien_di_pintu_3 = null
+		sembunyikan_ui() # Hilangkan UI
+
+func _on_sensor_4_body_exited(body): 
+	if body == pasien_di_pintu_4: 
+		pasien_di_pintu_4 = null
+		sembunyikan_ui() # Hilangkan UI
 
 # --- LOGIKA TIMER HABIS ---
 func _on_timer_1_timeout(): teks_1.text = "KOSONG"; teks_1.modulate = Color.GREEN
