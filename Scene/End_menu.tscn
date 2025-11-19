@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cv7kt530cx1t0"]
 
-[ext_resource type="Script" uid="uid://c8oxrleooj7a8" path="res://script/main_menu.gd" id="1_x4o4p"]
+[ext_resource type="Script" uid="uid://kof37786wysm" path="res://script/End.gd" id="1_x4o4p"]
 [ext_resource type="Texture2D" uid="uid://b5251tes6fnby" path="res://assets/textures/backgroundpink.jpg" id="2_ijuen"]
 [ext_resource type="FontFile" uid="uid://vf1s7pbsf3p1" path="res://assets/Font/Death Bones.ttf" id="3_clb6d"]
 
@@ -34,7 +34,7 @@ shadow_size = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
 
-[node name="MainMenu" type="Control"]
+[node name="End_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -133,5 +133,5 @@ text = "Pasien Selamat =  ?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]

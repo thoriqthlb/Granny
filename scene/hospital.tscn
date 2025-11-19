@@ -42,7 +42,7 @@ size = Vector3(1.5, 3, 0.05)
 [sub_resource type="LabelSettings" id="LabelSettings_wxsig"]
 font_size = 32
 
-[node name="Sistem_RS" type="Node3D" groups=["game_manager"]]
+[node name="Sistem_RS" type="Node3D"]
 script = ExtResource("1_dcg5e")
 waktu_pintu_2 = 15.0
 waktu_pintu_3 = 20.0

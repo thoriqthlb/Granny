@@ -31,9 +31,15 @@ var pasien_di_pintu_4 = null
 var game_manager = null
 
 func _ready():
+	var managers = get_tree().get_nodes_in_group("game_manager")
+	if not managers.is_empty():
+		game_manager = managers[0]
+		print("DEBUG: Game Manager ditemukan oleh Hospital.")
+	else:
+		push_warning("ERROR: Game Manager/Spawner tidak ditemukan! Fitur end-game tidak akan berfungsi.")
+
 	# Sembunyikan UI Interaksi saat game dimulai
 	ui_label.visible = false 
-	
 	# Set semua tulisan awal jadi hijau
 	teks_1.text = "EMPTY"; teks_1.modulate = Color.GREEN
 	teks_2.text = "EMPTY"; teks_2.modulate = Color.GREEN
@@ -82,6 +88,8 @@ func proses_interaksi(no_pintu, pasien, timer, teks, waktu_durasi: float):
 		teks.modulate = Color.RED
 		sembunyikan_ui() # Sembunyikan UI setelah pasien dimasukkan
 		print("Pasien masuk Pintu " + str(no_pintu) + " dengan timer: " + str(waktu_durasi) + " detik.")
+		if game_manager and game_manager.has_method("patient_successfully_processed"):
+			game_manager.patient_successfully_processed()
 
 
 # --- LOGIKA SENSOR MASUK (UPDATE UNTUK UI) ---

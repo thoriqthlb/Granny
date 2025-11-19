@@ -85,7 +85,8 @@ func check_end_game_condition():
 
 func end_game(is_win: bool):
 	set_process(false)
-	
+	get_tree().paused = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if end_menu_scene == null:
 		push_error("End Menu Scene belum di-assign!")
 		return
@@ -95,10 +96,11 @@ func end_game(is_win: bool):
 	
 	if end_menu.has_method("set_end_screen_data"):
 		var total_patients_saved = patients_processed_count
+		var total_patients_failed = patients_failed_count
 		var total_max_patients = max_patients
 		
 		# Kirim data pasien yang selamat
-		end_menu.set_end_screen_data(is_win, total_patients_saved, total_max_patients)
+		end_menu.set_end_screen_data(is_win, total_patients_saved, total_patients_failed, total_max_patients)
 		
 	# Hapus scene game lama
-	get_tree().current_scene.queue_free()
+	get_tree().current_scene.call_deferred("queue_free")
